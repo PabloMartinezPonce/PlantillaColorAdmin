@@ -1,0 +1,148 @@
+Smart Wizard 4 - Minimum Publish Plan
+------------------------------------------
+NPM 
+d:
+cd D:\websites\Plugins\SmartWizard
+npm publish
+
+RELEASE STEPS
+----------------
+ Complete Development
+ Update test cases
+ Update version number on package files 
+ Update Readme file
+ Add/Update demo pages
+ Update Site detail, documentation, version number, release note, change log on development
+ Update site demo files on development
+ Build files
+ Update github pages
+ Create screen shots 
+
+ Add git tag with version number
+ Commit and push files to github
+ Update Site detail, documentation and change log on production 
+ Update site demo files on production
+ Verify pages, github, package sites
+ Update npm
+ Close github issues
+ Check TravisCI Builds
+
+SET 8
+-------------------------
+Go to step function
+Move the condition inside mi._showNext();, if(mi.steps.index(this) !== mi.current_index) {
+Add a navigation events, next, previous, only for buttons
+transitionEasing
+An event when the state of the step is changed?
+Add a standalone css (non bootstrap css)
+anchorSettings: anchorPosition: 'top', // none, top, left, right, bottom, Do as a theme
+Function to add/remove css , error, warning, info etc. markDoneStep could be set as done css
+More events: step done (when a step is done or status is changed)
+
+Dot and circle theme progress bar
+Dots: http://bootsnipp.com/snippets/featured/form-process-steps
+
+Theme, Title shows on left but progress dots on right
+Simple Tabbed - http://bootsnipp.com/snippets/featured/panel-with-tabs
+
+Add/delete/edit existing steps. pass an object(title, content, step position)
+
+
+========================================================================================
+SET 7 - Completed on 27-03-2017 with v4.2.1 
+-----------------------
+Create a development env with Gulp
+Add test script
+Add TravisCI integration
+
+SET 6 - Completed on 21-02-2017 with v4.1.7 
+-----------------------
+Improve existing themes
+Make all themes Responsive
+
+Loading:
+https://envato.com/blog/pure-css-animation-snippets/
+
+
+SET 5 - Completed on 01-02-2017 with v4.1.5
+----------------------------------------
+New options contentCache: true, // cache step contents, if false content is fetched always from ajax url
+            ajaxSettings: {}, // Ajax extra settings 
+Update Github Pages
+
+
+SET 4 - Completed on 09-01-2017 with v4.1.2 
+----------------------------------------
+Patch update:
++ option "markAllPreviousStepsAsDone" is enabled for "selected" option
++ while reset, set hash is now controllable using "showStepURLhash" option
+
+
+SET 3 - Completed on 08-12-2016
+------------------
+New parameters: showStepURLhash: true, removeDoneStepOnNavigateBack: false,
+markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+Option, while navigate back remove done step
+check if adding bootstrap js will not affect the working
+dont change hash if already on that hash
+page jumping issue 
+new parameter, stepPosition, first, final, middle only on showStep event
+new parameter, hiddenSteps: [],
+find better way to change hash and page jump fix
+Issue if we add external anchor elements with same hash, limit the selector a href*[], use the find option
+Wizard within a Wizard 
+Make toolbar to accept array of jquery elements .  btnGroupExtra, More attributes to. Extra buttons
+check the working of this.is_animating, is it really required? Not required, added finish() instead.
+New public method, stepState, Function to Dynamically disable/enable hide/show steps
+Code optimised
+Bugs fixed
+Update to v4.1.1
+hidden step skip
+Compatible with jQuery 2+, 3+ support (jquery-1.9+, jquery-2+, jquery-3+)
+Review the whole code again
+smartwizard in bootstrap model
+themes Responsive (default and arrow)
+
+SET 2 - Completed on 16-11-2016
+------------------
+No validation for back button, get the direction of movement
+More events: reset(beginReset, endReset), theme change
+Update to v4.0.5
+
+SET 1 - Completed on 01-11-2016
+------------------
+Anchor settings
+Toolbar settings
+Load ajax contents, custom for each steps, content-url, Ajax content
+reset functionality
+Theme based css, Restructure css, Good theme support
+next, previous public funtions
+Toolbar events, previous, next
+Toolbar- Heavily customisable toolbar, remove finish button on default Add extra buttons, buttons: {label: 'Next', action: 'callMe' },
+Remove finish button and add as a custom tool button
+set theme public function 
+issue with first step marked as done
+multiple wizard on same page
+documentation
+example pages, input validation example
+test well- fix issues 
+push github
+>> Release date
+>> Add tag bootstrap
+>> Change licence text 
+>> write documentation
+>> Add demo pages
+>> Create screenshots
+>> Add readme 
+>> Check home screen image
+>> Backup production database
+>> Minimize js and css
+>> Add to github with new tag and repository
+Add to package managers
+Create new screenshots with less width
+
+
+
+USAGES
+---------------
+https://colorlib.com/polygon/gentelella/form_wizards.html

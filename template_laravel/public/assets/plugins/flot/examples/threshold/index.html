@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Thresholds</title>
+    <link href="../examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="../../excanvas.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="header">
+      <h2>Thresholds</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>With the threshold plugin, you can apply a specific color to the part of a data series below a threshold. This is can be useful for highlighting negative values, e.g. when displaying net results or what's in stock.</p>
+
+      <p class="controls">
+        <button type="button" onclick="plotWithOption(5);">Threshold at 5</button>
+        <button type="button" onclick="plotWithOption(0);">Threshold at 0</button>
+        <button type="button" onclick="plotWithOption(-2.5);">Threshold at -2.5</button>
+      </p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script src="../../flot.threshold.js"></script>
+    <script>
+      var d1 = [];
+      for (var i = 0; i <= 60; i += 1) {
+          d1.push([i, parseInt(Math.random() * 30 - 10)]);
+      }
+
+      var placeholder = document.getElementById('placeholder');
+
+      function plotWithOption(t) {
+        plotWithOptions(t);
+      }
+
+      function plotWithOptions(t) {
+        new Plot(placeholder, [{
+          data: d1,
+          color: "rgb(30, 180, 20)",
+          threshold: {
+            below: t,
+            color: "rgb(200, 20, 30)"
+          },
+          lines: {
+            steps: true
+          }
+        }]);
+      }
+
+      plotWithOptions(0);
+
+      // Add the Flot version string to the footer
+
+      var footer = document.getElementById('footer');
+
+      footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+    </script>
+  </body>
+</html>

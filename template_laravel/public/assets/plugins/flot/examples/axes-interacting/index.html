@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Basic Usage</title>
+    <link href="../examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="../../excanvas.js"></script><![endif]-->
+    <style>
+      .axisTarget {
+        opacity: 0;
+      }
+      .axisTarget:hover {
+        opacity: 0.10;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+      <h2>Interacting with axes</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>With multiple axes, you sometimes need to interact with them. A simple way to do this is to draw the plot, deduce the axis placements and insert a couple of divs on top to catch events.</p>
+
+      <p>Try clicking an axis.</p>
+
+      <p id="click"></p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script>
+      (function() {
+
+        function generate(start, end, fn) {
+          var res = [];
+          for (var i = 0; i <= 100; ++i) {
+            var x = start + i / 100 * (end - start);
+            res.push([x, fn(x)]);
+          }
+          return res;
+        }
+
+		var data = [
+          { data: generate(0, 10, function (x) { return Math.sqrt(x);}), xaxis: 1, yaxis:1 },
+          { data: generate(0, 10, function (x) { return Math.sin(x);}), xaxis: 1, yaxis:2 },
+          { data: generate(0, 10, function (x) { return Math.cos(x);}), xaxis: 1, yaxis:3 },
+          { data: generate(2, 10, function (x) { return Math.tan(x);}), xaxis: 2, yaxis: 4 }
+		];
+
+        var click = document.getElementById('click');
+
+        var placeholder = document.getElementById('placeholder');
+
+		var plot = new Plot(placeholder, data, {
+          xaxes: [
+            {position: 'bottom'},
+            {position: 'top'}
+          ],
+          yaxes: [
+            {position: 'left'},
+            {position: 'left'},
+            {position: 'right'},
+            {position: 'left'}
+          ]
+        });
+
+        // Create a div for each axis
+
+        var axes = plot.getAxes(), k, axis;
+        for (k in axes) {
+          if (!axes.hasOwnProperty(k))
+            continue;
+          axis = axes[k];
+          if (!axis.show)
+            continue;
+
+          var box = axis.box;
+          var div = document.createElement('div');
+          var styles = {
+            "position": 'absolute',
+            "left": box.left + 'px',
+            "top": box.top + 'px',
+            "width": box.width + 'px',
+            "height": box.height + 'px',
+            "backgroundColor": "#f00",
+            "cursor": 'pointer'
+          };
+
+          div.className = 'axisTarget';
+          div.setAttribute('data-axis-direction', axis.direction);
+          div.setAttribute('data-axis-n', axis.n);
+          div.onclick = function() {
+            click.innerHTML = 'You clicked the '
+                    + this.getAttribute('data-axis-direction')
+                    + this.getAttribute('data-axis-n')
+                    + 'axis!';
+          };
+
+          var s;
+          for (s in styles) {
+            if (styles.hasOwnProperty(s)) {
+              div.style[s] = styles[s];
+            }
+          }
+
+          placeholder.appendChild(div);
+        }
+
+		// Add the Flot version string to the footer
+
+        var footer = document.getElementById('footer');
+
+        footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+      })();
+    </script>
+  </body>
+</html>

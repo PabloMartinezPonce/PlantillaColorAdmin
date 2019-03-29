@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Canvas text</title>
+    <link href="../examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="../../excanvas.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="header">
+      <h2>Canvas text</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>This example is a copy of the basic usage example, but uses the canvas plugin to render axis tick labels using canvas text.</p>
+
+      <p><label>Enable canvas text <input onchange="onChange(this);" type="checkbox" checked="checked" /></label></p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script src="../../flot.canvas.js"></script>
+    <script>
+
+      var d1 = [];
+      for (var i = 0; i < 14; i += 0.5) {
+          d1.push([i, Math.sin(i)]);
+      }
+
+      var d2 = [[0, 3], [4, 8], [8, 5], [9, 13]];
+
+      // A null signifies separate line segments
+
+      var d3 = [[0, 12], [7, 12], null, [7, 2.5], [12, 2.5]];
+
+      var options = { canvas: true };
+
+      var placeholder = document.getElementById('placeholder');
+
+      new Plot(placeholder, [ d1, d2, d3 ], options);
+
+      function onChange(input) {
+        options.canvas = input.checked;
+        new Plot(placeholder, [ d1, d2, d3 ], options);
+      }
+
+      // Add the Flot version string to the footer
+
+      var footer = document.getElementById('footer');
+
+      footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+    </script>
+  </body>
+</html>

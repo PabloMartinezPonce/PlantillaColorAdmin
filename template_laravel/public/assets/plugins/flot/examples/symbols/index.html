@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Symbols</title>
+    <link href="../examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="../../excanvas.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="header">
+      <h2>Symbols</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>Points can be marked in several ways, with circles being the built-in default. For other point types, you can define a callback function to draw the symbol. Some common symbols are available in the symbol plugin.</p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script src="../../flot.symbol.js"></script>
+    <script>
+      (function() {
+
+        function generate(offset, amplitude) {
+
+          var res = [];
+          var start = 0, end = 10;
+
+          for (var i = 0; i <= 50; ++i) {
+            var x = start + i / 50 * (end - start);
+            res.push([x, amplitude * Math.sin(x + offset)]);
+          }
+
+          return res;
+        }
+
+		var data = [
+          { data: generate(2, 1.8), points: { symbol: "circle" } },
+          { data: generate(3, 1.5), points: { symbol: "square" } },
+          { data: generate(4, 0.9), points: { symbol: "diamond" } },
+          { data: generate(6, 1.4), points: { symbol: "triangle" } },
+          { data: generate(7, 1.1), points: { symbol: "cross" } }
+		];
+
+        var placeholder = document.getElementById('placeholder');
+
+		new Plot(placeholder, data, {
+          series: {
+            points: {
+              show: true,
+              radius: 3
+            }
+          },
+          grid: {
+            hoverable: true
+          }
+        });
+
+		// Add the Flot version string to the footer
+
+        var footer = document.getElementById('footer');
+
+        footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+      })();
+    </script>
+  </body>
+</html>

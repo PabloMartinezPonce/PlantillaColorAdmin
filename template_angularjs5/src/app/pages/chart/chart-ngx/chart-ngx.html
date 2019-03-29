@@ -1,0 +1,282 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+	<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+	<li class="breadcrumb-item"><a href="javascript:;">Chart</a></li>
+	<li class="breadcrumb-item active">Ngx Chart</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Ngx Chart <small>header small text goes here...</small></h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Basic Line Chart</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+          <ngx-charts-line-chart
+            [animations]="false"
+            [scheme]="chartColor"
+            [results]="chartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Census Date'"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'GDP Per Capita'"
+            [roundDomains]="true"
+            [autoScale]="true">
+          </ngx-charts-line-chart>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Area Chart</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+          <ngx-charts-area-chart-stacked
+            [animations]="false"
+            [scheme]="chartColor"
+            [results]="areaChartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Census Date'"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'GDP Per Capita'">
+          </ngx-charts-area-chart-stacked>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Bar Chart</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+				  <ngx-charts-bar-vertical
+            [view]="view"
+            [scheme]="chartColor"
+            [results]="barChartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Census Date'"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'GDP Per Capita'">
+          </ngx-charts-bar-vertical>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Stacked Bar Chart</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+				  <ngx-charts-bar-vertical-stacked
+            [view]="view"
+            [scheme]="chartColor"
+            [results]="stackedBarChartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Census Date'"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'GDP Per Capita'">
+          </ngx-charts-bar-vertical-stacked>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+</div>
+<!-- end row --><!-- begin row -->
+<div class="row">
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Pie Chart</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+				  <ngx-charts-pie-chart
+            [scheme]="chartColor"
+            [results]="pieChartData"
+            [legend]="false"
+            [explodeSlices]="false"
+            [labels]="true"
+            [doughnut]="false">
+          </ngx-charts-pie-chart>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Pie Grid</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+				  <ngx-charts-pie-grid
+            [scheme]="chartColor"
+            [results]="pieChartData">
+          </ngx-charts-pie-grid>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+</div>
+<!-- end row -->
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Heat Map</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+				  <ngx-charts-heat-map
+            [view]="view"
+            [scheme]="chartColor"
+            [results]="heatMapChartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Census Date'"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'GDP Per Capita'">
+          </ngx-charts-heat-map>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Polar Chart</h4>
+			</div>
+			<div class="panel-body">
+				<div class="height-sm">
+          <ngx-charts-polar-chart
+            [animations]="false"
+            [scheme]="chartColor"
+            [results]="chartData"
+            [xAxis]="true"
+            [yAxis]="true"
+            [legend]="true"
+            [showXAxisLabel]="true"
+            [xAxisLabel]="'Census Date'"
+            [showYAxisLabel]="true"
+            [yAxisLabel]="'GDP Per Capita'"
+            [roundDomains]="true"
+            [autoScale]="true">
+          </ngx-charts-polar-chart>
+				</div>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+</div>
+<!-- end row -->

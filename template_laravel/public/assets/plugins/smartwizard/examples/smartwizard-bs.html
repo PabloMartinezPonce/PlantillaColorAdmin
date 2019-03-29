@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Wizard - a JavaScript jQuery Step Wizard plugin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../src/css/smart_wizard.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/smart_wizard_theme_circles.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/smart_wizard_theme_arrows.css" rel="stylesheet" type="text/css" />
+    <link href="../src/css/smart_wizard_theme_dots.css" rel="stylesheet" type="text/css" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <form class="form-inline">
+             <div class="form-group">
+              <label >Choose Theme:</label>
+              <select id="theme_selector" class="form-control">
+                    <option value="default">default</option>
+                    <option value="arrows">arrows</option>
+                    <option value="circles">circles</option>
+                    <option value="dots">dots</option>
+              </select>
+            </div>  
+            
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
+              Launch demo modal
+            </button>
+            <label id="msg"></label>
+            <label>External Buttons:</label>
+            <div class="btn-group navbar-btn" role="group">
+                <button class="btn btn-default" id="prev-btn" type="button">Go Previous</button>
+                <button class="btn btn-default" id="next-btn" type="button">Go Next</button>
+                <button class="btn btn-danger" id="reset-btn" type="button">Reset Wizard</button>
+            </div>
+        </form>
+        <br> <br>
+<!-- Modal -->
+<!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body"> 
+ </div>       
+<div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>            -->
+        
+
+        <!-- SmartWizard html data-content-url="./ajaxtest.php" -->
+        <div id="smartwizard">
+            <ul class="">
+                <li><a href="#step-1">Step 1<br /><small>This is step description</small></a></li>
+                <li><a href="#step-2"  data-content-url="./ajaxtest.php">Step 2<br /><small>This is step description</small></a></li>
+                <li><a href="#step-3"  >Step 3<br /><small>This is step description</small></a></li>
+                <li><a href="#step-4">Step 4<br /><small>This is step description</small></a></li>
+            </ul>
+            
+            <div>
+                <div id="step-1" class="">
+                    <h2>Step 1 Content</h2>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+                <div id="step-2" class="">
+                    <h2>Step 2 Content</h2>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+                <div id="step-3" class="">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    <a class="expander" href="#" onclick="javascript: $('#expander').toggle();">CLICK ME</a>
+                    <div id="expander" style="display: none">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </div>
+                    
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+                <div id="step-4" class="">
+                    <h2>Step 4 Content</h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">My Details</div>
+                        <table class="table">
+                            <tbody>
+                                <tr> <th>Name:</th> <td>Tim Smith</td> </tr>
+                                <tr> <th>Email:</th> <td>example@example.com</td> </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        
+    </div>
+    
+    <!-- jQuery Versions -->
+    <!--<script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>-->
+    <!--<script src="http://code.jquery.com/jquery-migrate-1.4.1.js"></script>-->
+    
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-2.0.0.min.js"></script>-->
+    <!--<script src="http://code.jquery.com/jquery-migrate-1.1.1.js"></script>-->
+    
+    <!--<script src="https://code.jquery.com/jquery-3.0.0.js"></script>-->
+    <!--<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>-->
+    <!-- jQuery Versions -->
+    
+    <!-- Latest compiled and minified JavaScript -->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->       
+
+    <!--<script type="text/javascript" src="js/jquery-1.8.0.min.js"></script>-->
+    <script type="text/javascript" src="../src/js/jquery.smartWizard.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            
+            // console.log(jQuery.migrateWarnings);
+            
+            $("#smartwizard").on("leaveStep", function(e, anchorObject, stepNumber) {
+               //return confirm("Do you want to leave the step "+stepNumber+"?");
+            });
+            
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection, stepPosition) {
+                $('#msg').text(stepNumber+stepDirection);
+                if(stepNumber == 5){
+                    if(stepDirection == 'forward'){
+                        $('#smartwizard').smartWizard("next");
+                    }else{
+                        $('#smartwizard').smartWizard("prev");
+                    }
+                }
+                
+                
+               //alert("You are on step "+stepNumber+" now");
+//               if(stepPosition === 'first'){
+//                   $("#prev-btn").addClass('disabled');
+//               }else if(stepPosition === 'final'){
+//                   $("#next-btn").addClass('disabled');
+//               }else{
+//                   $("#prev-btn").removeClass('disabled');
+//                   $("#next-btn").removeClass('disabled');
+//               }
+            });
+            
+            var btnFinish = $('<button></button>').text('Finish')
+                                             .addClass('btn btn-info')
+                                             .attr('type','button')
+                                             .on('click', function(){ alert('Finish Clicked'); });
+            var btnCancel = $('<button></button>').text('Cancel')
+                                             .addClass('btn btn-danger')
+                                             .attr('type','button')
+                                             .on('click', function(){ $('#smartwizard').smartWizard("reset"); });                         
+            
+            
+            // Smart Wizard
+            $('#smartwizard').smartWizard({ selected: 0, 
+                                            theme: 'circles', // circles
+                                            transitionEffect:'fade',
+                                            showStepURLhash: true,
+                                             
+                                            anchorSettings: {
+                                                anchorClickable: true, // Enable/Disable anchor navigation
+                                                enableAllAnchors: false, // Activates all anchors clickable all times
+                                                markDoneStep: true, // add done css
+                                                markAllPreviousStepsAsDone: true, // When a step selected by url hash, all previous steps are marked done
+                                                enableAnchorOnDoneStep: true // Enable/Disable the done steps navigation
+                                            }
+                                         });
+                                         
+                                         
+            // External Buttons 
+            $("#prev-btn").on("click", function() {
+                // Navigate previous
+                $('#smartwizard').smartWizard("prev");
+                //$('#smartwizard .sw-btn-next').hide();
+                return true;
+            });
+            
+            $("#next-btn").on("click", function() {
+                // Navigate next
+                $('#smartwizard').smartWizard("next");
+                //$('#smartwizard').smartWizard("stepState", [1,3], "show");
+                return true;
+            });
+            
+            $("#reset-btn").on("click", function() {
+                // Reset wizard
+                $('#smartwizard').smartWizard("reset");
+                //$('#smartwizard').smartWizard("stepState", [2], "show");
+                //$('#smartwizard').smartWizard("theme", "circle"); 
+                
+                return true;
+            });
+
+            $("#theme_selector").on("change", function() {
+                // Change theme
+                $('#smartwizard').smartWizard("theme", $(this).val());
+                return true;
+            });
+            
+            // Set selected theme on page refresh
+            $("#theme_selector").change();
+            
+        });   
+
+    </script>  
+</body>
+</html>

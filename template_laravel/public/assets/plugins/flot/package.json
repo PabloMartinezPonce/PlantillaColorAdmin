@@ -1,0 +1,86 @@
+{
+  "_args": [
+    [
+      "flotjs@0.1.3",
+      "/Users/ngunguoksiong/Sites/bootstrap/color-admin/template/color_admin_v4.0.1/admin/template/template_laravel"
+    ]
+  ],
+  "_from": "flotjs@0.1.3",
+  "_id": "flotjs@0.1.3",
+  "_inBundle": false,
+  "_integrity": "sha1-WBw4Hal2XNnkyqAPh8sB4b+U7G0=",
+  "_location": "/flotjs",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "flotjs@0.1.3",
+    "name": "flotjs",
+    "escapedName": "flotjs",
+    "rawSpec": "0.1.3",
+    "saveSpec": null,
+    "fetchSpec": "0.1.3"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/flotjs/-/flotjs-0.1.3.tgz",
+  "_spec": "0.1.3",
+  "_where": "/Users/ngunguoksiong/Sites/bootstrap/color-admin/template/color_admin_v4.0.1/admin/template/template_laravel",
+  "author": {
+    "name": "Ole Laursen",
+    "url": "https://github.com/OleLaursen"
+  },
+  "bugs": {
+    "url": "https://github.com/dennisduong/flot/issues"
+  },
+  "contributors": [
+    {
+      "name": "David Schnur",
+      "email": "dnschnur@gmail.com",
+      "url": "http://github.com/dnschnur"
+    },
+    {
+      "name": "Dennis Duong",
+      "email": "dennis.duong@hotmail.com"
+    }
+  ],
+  "description": "Flot is a pure JavaScript plotting library, with a focus on simple usage, attractive looks and interactive features.",
+  "devDependencies": {
+    "uglify-js": "^2.6.1"
+  },
+  "homepage": "https://github.com/dennisduong/flot#readme",
+  "keywords": [
+    "plot",
+    "chart",
+    "graph",
+    "visualization",
+    "canvas",
+    "graphics",
+    "flot",
+    "pie"
+  ],
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/flot/flot/blob/master/LICENSE.txt"
+    }
+  ],
+  "main": "flot.js",
+  "name": "flotjs",
+  "peerDependencies": {
+    "dom-tools": "^0.1.1",
+    "wolfy87-eventemitter": "^4.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dennisduong/flot.git"
+  },
+  "scripts": {
+    "build": "uglifyjs flot.js -c -o flot.min.js -m --comments /@preserve/",
+    "bundle": "uglifyjs dom-tools.js EventEmitter.js flot.js -c -o flot.bundle.min.js -m --comments /@preserve/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "0.1.3"
+}

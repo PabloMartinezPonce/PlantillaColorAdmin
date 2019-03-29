@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Interactivity</title>
+    <link href="../examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="../../excanvas.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="header">
+      <h2>Interactivity</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>One of the goals of Flot is to support user interactions. Try pointing and clicking on the points.</p>
+
+      <p>
+        <label><input id="enablePosition" type="checkbox" checked="checked" />Show mouse position</label>
+        <span id="hoverdata"></span>
+        <span id="clickdata"></span>
+      </p>
+
+      <p>A tooltip is easy to build with a bit of JavaScript code and the data returned from the plot.</p>
+
+      <p><label><input id="enableTooltip" type="checkbox" checked="checked" />Enable tooltip</label></p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script>
+
+      var sin = [],
+          cos = [];
+      for (var i = 0; i < 14; i += 0.5) {
+          sin.push([i, Math.sin(i)]);
+          cos.push([i, Math.cos(i)]);
+      }
+
+      var plot = new Plot(document.getElementById('placeholder'), [
+			{ data: sin, label: "sin(x)"},
+			{ data: cos, label: "cos(x)"}
+		], {
+        series: {
+          lines: {
+            show: true
+          },
+          points: {
+            show: true
+          }
+        },
+        grid: {
+          hoverable: true,
+          clickable: true
+        },
+        yaxis: {
+          min: -1.2,
+          max: 1.2
+        }
+      });
+
+      var tooltip = document.createElement('tooltip');
+      var styles = {
+        position: "absolute",
+        display: "none",
+        border: "1px solid #fdd",
+        padding: "2px",
+        backgroundColor: "#fee",
+        opacity: 0.80
+      };
+
+      for (var s in styles) {
+        if (styles.hasOwnProperty(s)) {
+          tooltip.style[s] = styles[s];
+        }
+      }
+
+      document.body.appendChild(tooltip);
+
+      var clickData = document.getElementById('clickdata');
+      var enablePosChkBox = document.getElementById('enablePosition');
+      var enableTooltipChkBox = document.getElementById('enableTooltip');
+      var hoverData = document.getElementById('hoverdata');
+
+      plot.bind("plothover", function (event, pos, item) {
+        if (enablePosChkBox.checked) {
+          hoverData.innerHTML = "(" + pos.x.toFixed(2) + ", " + pos.y.toFixed(2) + ")";
+        }
+        if (enableTooltipChkBox.checked) {
+          if (item) {
+            var x = item.datapoint[0].toFixed(2);
+            var y = item.datapoint[1].toFixed(2);
+
+            tooltip.innerHTML = item.series.label + " of " + x + " = " + y;
+            tooltip.style.top = (item.pageY + 5) + 'px';
+            tooltip.style.left = (item.pageX + 5) + 'px';
+            tooltip.style.display = 'block';
+          } else {
+            tooltip.style.display = 'none';
+          }
+        }
+      });
+
+      plot.bind("plotclick", function (event, pos, item) {
+        if (item) {
+          clickData.innerHTML = " - click point " + item.dataIndex + " in " + item.series.label;
+          plot.highlight(item.series, item.datapoint);
+        }
+      });
+
+      // Add the Flot version string to the footer
+
+      var footer = document.getElementById('footer');
+
+      footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+    </script>
+  </body>
+</html>

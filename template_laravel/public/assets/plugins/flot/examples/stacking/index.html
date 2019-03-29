@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Stacking</title>
+    <link href="../examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="../../excanvas.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="header">
+      <h2>Stacking</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>With the stack plugin, you can have Flot stack the series. This is useful if you wish to display both a total and the constituents it is made of. The only requirement is that you provide the input sorted on x.</p>
+
+      <p>
+        <button type="button" onclick="toggleStacking(true);">With stacking</button>
+        <button type="button" onclick="toggleStacking(false);">Without stacking</button>
+      </p>
+
+      <p>
+        <button type="button" onclick="toggleBars();">Bars</button>
+        <button type="button" onclick="toggleLines();">Lines</button>
+        <button type="button" onclick="toggleSteps();">Lines with steps</button>
+      </p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script src="../../flot.stack.js"></script>
+    <script>
+      var placeholder = document.getElementById('placeholder');
+
+      var d1 = [], i;
+      for (i = 0; i <= 10; i += 1) {
+        d1.push([i, parseInt(Math.random() * 30)]);
+      }
+
+      var d2 = [];
+      for (i = 0; i <= 10; i += 1) {
+        d2.push([i, parseInt(Math.random() * 30)]);
+      }
+
+      var d3 = [];
+      for (i = 0; i <= 10; i += 1) {
+        d3.push([i, parseInt(Math.random() * 30)]);
+      }
+
+      var stack = 0,
+          bars = true,
+          lines = false,
+          steps = false;
+
+      function plotWithOptions() {
+        new Plot(placeholder, [d1, d2, d3], {
+          series: {
+            stack: stack,
+            lines: {
+              show: lines,
+              fill: true,
+              steps: steps
+            },
+            bars: {
+              show: bars,
+              barWidth: 0.6
+            }
+          }
+        });
+      }
+
+      plotWithOptions();
+
+      function toggleStacking(v) {
+        stack = v ? true : null;
+        plotWithOptions();
+      }
+
+      function toggleBars() {
+        bars = true;
+        lines = steps = false;
+        plotWithOptions();
+      }
+
+      function toggleLines() {
+        lines = true;
+        bars = steps = false;
+        plotWithOptions();
+      }
+
+      function toggleSteps() {
+        steps = lines = true;
+        bars = false;
+        plotWithOptions();
+      }
+
+      // Add the Flot version string to the footer
+
+      var footer = document.getElementById('footer');
+
+      footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+    </script>
+  </body>
+</html>

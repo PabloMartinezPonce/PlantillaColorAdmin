@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples</title>
+    <link href="examples.css" rel="stylesheet">
+    <style>
+
+	h3 {
+		margin-top: 30px;
+		margin-bottom: 5px;
+	}
+
+	</style>
+  </head>
+  <body>
+    <div id="header">
+      <h2>Flot Examples</h2>
+    </div>
+
+    <div id="content">
+
+      <p>Here are some examples for <a href="http://www.flotcharts.org">Flot</a>, the Javascript charting library for jQuery:</p>
+
+      <h3>Basic Usage</h3>
+
+      <ul>
+        <li><a href="basic-usage/index.html">Basic example</a></li>
+        <li><a href="series-types/index.html">Different graph types</a> and <a href="categories/index.html">simple categories/textual data</a></li>
+        <li><a href="basic-options/index.html">Setting various options</a> and <a href="annotating/index.html">annotating a chart</a></li>
+        <li><a href="ajax/index.html">Updating graphs with AJAX</a> and <a href="realtime/index.html">real-time updates</a></li>
+      </ul>
+
+      <h3>Interactivity</h3>
+
+      <ul>
+        <li><a href="series-toggle/index.html">Turning series on/off</a></li>
+        <li><a href="selection/index.html">Rectangular selection support and zooming</a> and <a href="zooming/index.html">zooming with overview</a> (both with selection plugin)</li>
+        <li><a href="interacting/index.html">Interacting with the data points</a></li>
+        <li><del>Panning and zooming (with navigation plugin)</del> Plugin not yet ported!</li>
+        <li><del>Automatically redraw when window is resized (with resize plugin)</del> Plugin not yet ported!</li>
+      </ul>
+
+      <h3>Additional Features</h3>
+
+      <ul>
+        <li><a href="symbols/index.html">Using other symbols than circles for points</a> (with symbol plugin)</li>
+        <li><a href="axes-time/index.html">Plotting time series</a>, <a href="visitors/index.html">visitors per day with zooming and weekends</a> (with selection plugin)<del> and time zone support</del> <i>Did not port over "time zone support" page due to required "date.js" using jQuery.</i></li>
+        <li><a href="axes-multiple/index.html">Multiple axes</a> and <a href="axes-interacting/index.html">interacting with the axes</a></li>
+        <li><a href="threshold/index.html">Thresholding the data</a> (with threshold plugin)</li>
+        <li><a href="stacking/index.html">Stacked charts</a> (with stacking plugin)</li>
+        <li><a href="percentiles/index.html">Using filled areas to plot percentiles</a> (with fillbetween plugin)</li>
+        <li><a href="tracking/index.html">Tracking curves with crosshair</a> (with crosshair plugin)</li>
+        <li><del>Plotting prerendered images (with image plugin)</del> <i>Plugin not yet ported.</i></li>
+        <li><a href="series-errorbars/index.html">Plotting error bars</a> (with errorbars plugin)</li>
+        <li><a href="series-pie/index.html">Pie charts</a> (with pie plugin)</li>
+        <li><a href="canvas/index.html">Rendering text with canvas instead of HTML</a> (with canvas plugin)</li>
+      </ul>
+
+      <h3>Module loaders</h3>
+
+      <ul>
+        <li><a href="amd/index.html">Load flot.js using Asynchronous Module Definition (AMD)</a> (using <a href="http://requirejs.org/">require.js</a>)</li>
+      </ul>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+    <script src="../dom-tools.js"></script>
+    <script src="../EventEmitter.js"></script>
+    <script src="../flot.js"></script>
+    <script>
+      (function() {
+
+        // Add the Flot version string to the footer
+
+        var footer = document.getElementById('footer');
+
+        footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+      })();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Basic Options</title>
+    <link href="../examples.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header">
+      <h2>Basic Options</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>There are plenty of options you can set to control the precise looks of your plot. You can control the ticks on the axes, the legend, the graph type, etc.</p>
+
+      <p>Flot goes to great lengths to provide sensible defaults so that you don't have to customize much for a good-looking result.</p>
+
+    </div>
+
+    <div id="footer">       Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.       <br/>       Modified work Copyright &copy; 2016 Dennis Duong. 	</div>
+
+	<script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script>
+      (function() {
+
+        var d1 = [];
+		for (var i = 0; i < Math.PI * 2; i += 0.25) {
+			d1.push([i, Math.sin(i)]);
+		}
+		var d2 = [];
+		for (var i = 0; i < Math.PI * 2; i += 0.25) {
+			d2.push([i, Math.cos(i)]);
+		}
+		var d3 = [];
+		for (var i = 0; i < Math.PI * 2; i += 0.1) {
+			d3.push([i, Math.tan(i)]);
+		}
+        var placeholder = document.getElementById('placeholder');
+
+		new Plot(placeholder, [
+			{ label: "sin(x)", data: d1 },
+			{ label: "cos(x)", data: d2 },
+			{ label: "tan(x)", data: d3 }
+		], {
+			series: {
+				lines: { show: true },
+				points: { show: true }
+			},
+			xaxis: {
+				ticks: [
+					0, [ Math.PI/2, "\u03c0/2" ], [ Math.PI, "\u03c0" ],
+					[ Math.PI * 3/2, "3\u03c0/2" ], [ Math.PI * 2, "2\u03c0" ]
+				]
+			},
+			yaxis: {
+				ticks: 10,
+				min: -2,
+				max: 2,
+				tickDecimals: 3
+			},
+			grid: {
+				backgroundColor: { colors: [ "#fff", "#eee" ] },
+				borderWidth: {
+					top: 1,
+					right: 1,
+					bottom: 2,
+					left: 2
+				}
+			}
+		});
+
+		// Add the Flot version string to the footer
+
+        var footer = document.getElementById('footer');
+
+        footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+      })();
+    </script>
+  </body>
+</html>

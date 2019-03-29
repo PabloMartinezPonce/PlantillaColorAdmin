@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: Adding Annotations</title>
+    <link href="../examples.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="header">
+      <h2>Adding Annotations</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>Flot has support for simple background decorations such as lines and rectangles. They can be useful for marking up certain areas. You can easily add any HTML you need with standard DOM manipulation, e.g. for labels. For drawing custom shapes there is also direct access to the canvas.</p>
+
+    </div>
+
+    <div id="footer">
+      Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.
+      <br/>
+      Modified work Copyright &copy; 2016 Dennis Duong.
+	</div>
+
+    <script src="../../dom-tools.js"></script>
+    <script src="../../EventEmitter.js"></script>
+    <script src="../../flot.js"></script>
+    <script>
+      (function() {
+
+        var d1 = [];
+		for (var i = 0; i < 20; ++i) {
+			d1.push([i, Math.sin(i)]);
+		}
+		var data = [{ data: d1, label: "Pressure", color: "#333" }];
+		var markings = [
+			{ color: "#f6f6f6", yaxis: { from: 1 } },
+			{ color: "#f6f6f6", yaxis: { to: -1 } },
+			{ color: "#000", lineWidth: 1, xaxis: { from: 2, to: 2 } },
+			{ color: "#000", lineWidth: 1, xaxis: { from: 8, to: 8 } }
+		];
+		var placeholder = document.getElementById('placeholder');
+		var plot = new Plot(placeholder, data, {
+			bars: { show: true, barWidth: 0.5, fill: 0.9 },
+			xaxis: { ticks: [], autoscaleMargin: 0.02 },
+			yaxis: { min: -2, max: 2 },
+			grid: { markings: markings }
+		});
+		var o = plot.pointOffset({ x: 2, y: -1.2});
+
+        // Append it to the placeholder that Plot already uses for positioning
+        var div = document.createElement('div');
+        div.style.position = 'absolute';
+        div.style.left = (o.left + 4) + 'px';
+        div.style.top = o.top + 'px';
+        div.style.color = '#666';
+        div.style.fontSize = 'smaller';
+        div.innerHTML = 'Warming up';
+		placeholder.appendChild(div);
+		o = plot.pointOffset({ x: 8, y: -1.2});
+
+        div = document.createElement('div');
+		placeholder.appendChild(div);
+
+		// Draw a little arrow on top of the last label to demonstrate canvas
+		// drawing
+		var ctx = plot.getCanvas().getContext("2d");
+		ctx.beginPath();
+		o.left += 4;
+		ctx.moveTo(o.left, o.top);
+		ctx.lineTo(o.left, o.top - 10);
+		ctx.lineTo(o.left + 10, o.top - 5);
+		ctx.lineTo(o.left, o.top);
+		ctx.fillStyle = "#000";
+		ctx.fill();
+
+		// Add the Flot version string to the footer
+
+        var footer = document.getElementById('footer');
+
+        footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+      })();
+    </script>
+  </body>
+</html>

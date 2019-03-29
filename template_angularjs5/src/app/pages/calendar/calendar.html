@@ -1,0 +1,20 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+	<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+	<li class="breadcrumb-item active">Calendar</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Calendar <small>header small text goes here...</small></h1>
+<!-- end page-header -->
+
+<hr class="bg-grey-lighter" />
+
+<!-- begin calendar -->
+<div class="calendar">
+  <div *ngIf="calendarOptions">
+      <ng-fullcalendar #ucCalendar [options]="calendarOptions" (eventClick)="eventClick($event.detail)" (eventDrop)="updateEvent($event.detail)"
+          (eventResize)="updateEvent($event.detail)" (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
+  </div>
+</div>
+<!-- end calendar -->

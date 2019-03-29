@@ -1,0 +1,125 @@
+<!-- begin breadcrumb -->
+<ol class="breadcrumb pull-right">
+	<li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+	<li class="breadcrumb-item"><a href="javascript:;">UI Elements</a></li>
+	<li class="breadcrumb-item active">Modal & Notification</li>
+</ol>
+<!-- end breadcrumb -->
+<!-- begin page-header -->
+<h1 class="page-header">Modal & Notification <small>header small text goes here...</small></h1>
+<!-- end page-header -->
+
+<!-- begin row -->
+<div class="row">
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">NgbModal</h4>
+			</div>
+			<div class="panel-body">
+			  <p class="lead">
+			    A service to open modal windows. Creating a modal is straightforward: create a template and pass it as an argument to the "open" method!
+			  </p>
+				<!-- #modal-dialog -->
+				<ng-template #modalDialog let-c="close" let-d="dismiss">
+          <div class="modal-header">
+            <h4 class="modal-title">Modal Dialog</h4>
+            <button type="button" class="close" (click)="d('Cross click')">×</button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Modal body content here...
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-white" (click)="c('Close click')">Close</button>
+            <a href="javascript:;" class="btn btn-success">Action</a>
+          </div>
+				</ng-template>
+			</div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th>Demo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Default NgBootstrap Modal Dialog Box.</td>
+            <td><button class="btn btn-sm btn-success" (click)="open(modalDialog)">Demo</button></td>
+          </tr>
+        </tbody>
+      </table>
+			<div class="hljs-wrapper">
+        <textarea highlight-js [options]="{}" [lang]="'typescript'">&lt;ng-template #modalDialog let-c="close" let-d="dismiss"&gt;
+  &lt;div class="modal-header"&gt;
+    &lt;h4 class="modal-title"&gt;Modal Dialog&lt;/h4&gt;
+    &lt;button type="button" class="close" (click)="d('Cross click')"&gt;×&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-body"&gt;
+    &lt;p&gt;
+      Modal body content here...
+    &lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="modal-footer"&gt;
+    &lt;button class="btn btn-white" (click)="c('Close click')"&gt;Close&lt;/button&gt;
+    &lt;a href="javascript:;" class="btn btn-success"&gt;Action&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/ng-template&gt;</textarea>
+      </div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+
+	<!-- begin col-6 -->
+	<div class="col-lg-6">
+		<!-- begin panel -->
+		<div class="panel panel-inverse">
+			<div class="panel-heading">
+				<div class="panel-heading-btn">
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-default" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-success" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-warning" data-click="panel-collapse"><i class="fa fa-minus"></i></a>
+					<a href="javascript:;" class="btn btn-xs btn-icon btn-circle btn-danger" data-click="panel-remove"><i class="fa fa-times"></i></a>
+				</div>
+				<h4 class="panel-title">Bootstrap SweetAlert <span class="label label-success">NEW</span></h4>
+			</div>
+			<div class="panel-body">
+				<p class="lead m-b-10 text-inverse">
+					SweetAlert for Bootstrap. A beautiful replacement for JavaScript's "alert"
+				</p>
+				<hr />
+				<p class="">
+					Try any of those!
+				</p>
+				<a href="javascript:;" (click)="swalPrimary()" class="btn btn-primary">Primary</a>
+				<a href="javascript:;" (click)="swalInfo()" class="btn btn-info">Info</a>
+				<a href="javascript:;" (click)="swalSuccess()" class="btn btn-success">Success</a>
+				<a href="javascript:;" (click)="swalWarning()" class="btn btn-warning">Warning</a>
+				<a href="javascript:;" (click)="swalDanger()" class="btn btn-danger">Danger</a>
+			</div>
+			<div class="hljs-wrapper">
+<textarea highlight-js [options]="{}" [lang]="'xml, typescript'">// modal-notification.html
+&lt;a href="javascript:;" (click)="swalPrimary()" class="btn btn-primary"&gt;Primary&lt;/a&gt;
+
+// modal-notification.ts
+swalPrimary() {
+  swal('Question Type', 'description here', 'question');
+}</textarea>
+			</div>
+		</div>
+		<!-- end panel -->
+	</div>
+	<!-- end col-6 -->
+</div>
+<!-- end row -->

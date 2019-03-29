@@ -1,0 +1,170 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
+@import 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css';
+@import 'https://use.fontawesome.com/releases/v5.0.6/css/all.css';
+@import '../../assets/css/default/style.min.css';
+@import '../../assets/css/default/style-responsive.min.css';
+@import '../../assets/css/default/theme/default.css';
+@import 'https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.6.1/fullcalendar.min.css';
+
+.angular5 .sidebar .sub-menu {
+  display: block;
+}
+.angular5 .page-sidebar-minified .sidebar .sub-menu {
+  display: none;
+}
+.angular5 .angular-calendar-inline {
+  margin: 0 -1px -1px;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-day-cell.cal-today {
+  background: none;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-day-cell.cal-today .cal-day-number {
+  background: #2e353c;
+  color: #fff !important;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-day-cell,
+.angular5 .angular-calendar-inline .cal-month-view .cal-cell-top {
+  min-height: initial;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-header .cal-cell:hover,
+.angular5 .angular-calendar-inline .cal-month-view .cal-cell-row:hover {
+  background: none;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-day-number {
+  font-size: 12px !important;
+  font-weight: 600;
+  opacity: 1.0;
+  color: #2d353c;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  margin-top: 20px;
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 40px;
+  text-align: center;
+  line-height: 20px;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-day-cell.cal-weekend .cal-day-number {
+  color: #b6c2c9;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-header .cal-cell {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #2d353c;
+  padding: 5px 10px;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-day-badge {
+  text-indent: 20px;
+  width: 5px;
+  height: 5px;
+  min-width: 3px;
+  padding: 0;
+  overflow: hidden;
+  position: absolute;
+  bottom: 25px;
+  margin: 0;
+  right: 11px;
+  background: #ff5b57;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-cell-top,
+.angular5 .angular-calendar-inline .cal-month-view .cal-cell {
+  position:relative;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-events {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.angular5 .angular-calendar-inline .cal-month-view .cal-event {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 1px;
+  background: #e1e1e1;
+}
+
+
+/* Styling for the Slim Loading Progress Bar container */
+.slim-loading-bar {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 99999;
+}
+.top .slim-loading-bar {
+  top: 0;
+}
+
+/* Styling for the Slim Loading Progress Bar itself */
+.slim-loading-bar-progress {
+  margin: 0;
+  padding: 0;
+  z-index: 99998;
+  background-color: #00acac !important;
+  height: 3px !important;
+  opacity: 0;
+  -webkit-transition: all 0.15s ease-in-out;
+  -moz-transition: all 0.15s ease-in-out;
+  -o-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+}
+
+
+/* Countdown Timer */
+.timer .count-down.medium .digital {
+  font-size: 36px;
+  color: #fff;
+}
+
+/* Ng Datepicker */
+.ngb-dp-weekday[_ngcontent-c6] {
+  color: #2e353c !important;
+  font-size: 11px;
+  font-weight: bold;
+  font-style: initial !important;
+}
+.ngb-dp-header[_ngcontent-c3],
+.ngb-dp-weekdays[_ngcontent-c6] {
+  background-color: #f2f3f4!important;
+}
+[_nghost-c3].dropdown-menu {
+  border: none;
+}
+[_nghost-c3].dropdown-menu:focus {
+  outline: none !important;
+}
+.ngb-dp-week[_ngcontent-c6] {
+  margin-bottom: 4px !important;
+}
+[_nghost-c7] > select[_ngcontent-c7] {
+  font-size: 12px !important;
+}
+
+/* Tags Input */
+.tags-input__tag[_ngcontent-c3] {
+    padding: 2px 24px 3px 7px!important;
+    font-size: 12px !important;
+    margin: 2px 5px 2px 0 !important;
+    line-height: 16px !important;
+}
+.tags-input__tag-remove-btn[_ngcontent-c3] {
+    font-size: 18px !important;
+    margin-right: -20px !important;
+    margin-left: 5px !important;
+    margin-top: 0 !important;
+}
+
+/* header */
+.header .navbar-nav>li>.dropdown-menu {
+  position: absolute;
+}
+.dropdown-menu-right.dropdown-menu {
+  right: 0 !important;
+  left: auto !important;
+}

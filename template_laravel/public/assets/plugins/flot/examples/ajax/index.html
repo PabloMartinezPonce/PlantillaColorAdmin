@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flot Examples: AJAX</title>
+    <link href="examples.css" rel="stylesheet">
+    <!--[if lte IE 8]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+  </head>
+  <body>
+    <div id="header">
+      <h2>AJAX</h2>
+    </div>
+
+    <div id="content">
+
+      <div class="demo-container">
+        <div id="placeholder" class="demo-placeholder"></div>
+      </div>
+
+      <p>Example of loading data dynamically with AJAX. Percentage change in GDP (source: <a href="http://epp.eurostat.ec.europa.eu/tgm/table.do?tab=table&init=1&plugin=1&language=en&pcode=tsieb020">Eurostat</a>). Click the buttons below:</p>
+
+      <p>The data is fetched over HTTP, in this case directly from text files. Usually the URL would point to some web server handler (e.g. a PHP page or Java/.NET/Python/Ruby on Rails handler) that extracts it from a database and serializes it to JSON.</p>
+
+      <p>
+        <button onclick="fetchSeries('data-eu-gdp-growth.json');">First dataset</button>
+        [ <a href="data-eu-gdp-growth.json">see data</a> ]
+        <span id="data-eu-gdp-growth.json"></span>
+      </p>
+
+      <p>
+        <button onclick="fetchSeries('data-japan-gdp-growth.json')">Second dataset</button>
+        [ <a href="data-japan-gdp-growth.json">see data</a> ]
+        <span id="data-japan-gdp-growth.json"></span>
+      </p>
+
+      <p>
+        <button onclick="fetchSeries('data-usa-gdp-growth.json')">Third dataset</button>
+        [ <a href="data-usa-gdp-growth.json">see data</a> ]
+        <span id="data-usa-gdp-growth.json"></span>
+      </p>
+
+      <p>If you combine AJAX with setTimeout, you can poll the server for new data.</p>
+
+      <p>
+        <button onclick="initiateDataUpdate();">Poll for data</button>
+      </p>
+
+    </div>
+
+    <div id="footer">
+      Original work Copyright &copy; 2007-2014 IOLA and Ole Laursen.
+      <br/>
+      Modified work Copyright &copy; 2016 Dennis Duong.
+	</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/superagent/1.2.0/superagent.min.js"></script>
+    <script src="dom-tools.js"></script>
+    <script src="EventEmitter.js"></script>
+    <script src="flot.js"></script>
+    <script>
+
+      // Fetch one series, adding to what we already have
+
+      var alreadyFetched = {};
+
+      var options = {
+          lines: {
+              show: true
+          },
+          points: {
+              show: true
+          },
+          xaxis: {
+              tickDecimals: 0,
+              tickSize: 1
+          }
+      };
+      var data = [];
+      var placeholder = document.getElementById('placeholder');
+
+      function fetchSeries(url) {
+
+        function onDataReceived(err, res) {
+          if (res.ok) {
+            var series = res.body;
+
+            // Extract the first coordinate pair.
+            var firstCoordinate = "(" + series.data[0][0] + ", " + series.data[0][1] + ")";
+            var span = document.getElementById(url);
+
+            span.innerHTML = "Fetched " + series.label + ", first point: " + firstCoordinate;
+
+            // Push the new data onto our existing data array
+            if (!alreadyFetched[url]) {
+              alreadyFetched[url] = true;
+              data.push(series);
+            }
+
+            new Plot(placeholder, data, options);
+          }
+        }
+
+        superagent
+          .get(url)
+          .end(onDataReceived);
+      }
+
+      // Initiate a recurring data update
+      function initiateDataUpdate() {
+          data = [];
+          alreadyFetched = {};
+
+          new Plot(placeholder, data, options);
+
+          var iteration = 0;
+          function fetchData() {
+              ++iteration;
+              function onDataReceived(err, res) {
+                if (res.ok) {
+                  var series = res.body;
+
+                  // Load all the data in one pass; if we only got partial
+                  // data we could merge it with what we already have.
+                  data = [ series ];
+
+                  new Plot(placeholder, data, options);
+                }
+              }
+              // Normally we call the same URL - a script connected to a
+              // database - but in this case we only have static example
+              // files, so we need to modify the URL.
+              superagent
+                .get("data-eu-gdp-growth-" + iteration + ".json")
+                .end(onDataReceived);
+
+              if (iteration < 5) {
+                  setTimeout(fetchData, 1000);
+              } else {
+                  data = [];
+                  alreadyFetched = {};
+              }
+          }
+
+          setTimeout(fetchData, 1000);
+      }
+
+      (function() {
+
+        // Load the first series by default, so we don't have an empty plot
+
+        fetchSeries('data-eu-gdp-growth.json');
+
+        // Add the Flot version string to the footer
+
+        var footer = document.getElementById('footer');
+
+        footer.innerHTML = 'flot.js ' + Plot.version + '  &ndash; ' + footer.innerHTML;
+      })();
+    </script>
+  </body>
+</html>
